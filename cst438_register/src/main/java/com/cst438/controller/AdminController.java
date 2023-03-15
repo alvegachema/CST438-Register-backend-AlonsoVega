@@ -26,23 +26,28 @@ public class AdminController {
 	@PostMapping("/addStudent")
 	@Transactional
 	public StudentDTO addStudent (@RequestBody StudentDTO studentDTO) {
+		//the following check if the student already on file
 	    Student tempstudent = studentRepository.findByEmail(studentDTO.getStudentEmail());
 	    
+	    //if not student is found then one will be created
 	    if(tempstudent == null && studentDTO.getStudentName() != null && studentDTO.getStudentEmail() != null) {
 	        Student student = new Student();
 	        student.setName(studentDTO.getStudentName());
 	        student.setEmail(studentDTO.getStudentEmail());
 	        student.setStatus(studentDTO.getStatus());
 	        student.setStatusCode(Integer.parseInt(studentDTO.getStatusCode()));
+	        //This will save the new student
 	        Student savedStudent = studentRepository.save(student);
 	        
 	        StudentDTO result = createStudentDTO(savedStudent);
 	        return result;
 	    } else {
+	    	//This throws an exception
 	        throw  new ResponseStatusException( HttpStatus.BAD_REQUEST, "Invalid student/email address.  ");
 	    }
 	}
 
+	//This code take s an object and it will use PUt to update the hold of the student
 	@PutMapping("/hold/{student_id}")
 	public StudentDTO changeHold(@RequestBody StudentDTO studentDTO, @PathVariable("student_id") int student_id) {
 	    Student student = studentRepository.findById(student_id).orElse(null);
@@ -55,10 +60,12 @@ public class AdminController {
 	        StudentDTO result = createStudentDTO(savedStudent);
 	        return result;
 	    } else {
+	    	//This throws an exception
 	        throw  new ResponseStatusException( HttpStatus.BAD_REQUEST, "Invalid student/email address.  ");
 	    }
 	}
 
+	//This code creates the DTO of the student
 	private StudentDTO createStudentDTO(Student student) {
 	    StudentDTO studentDTO = new StudentDTO();
 	    studentDTO.setId(student.getStudent_id());

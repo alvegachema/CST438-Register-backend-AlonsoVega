@@ -43,25 +43,27 @@ public class ScheduleController {
 	GradebookService gradebookService;
 	
 	
-	/*
-	 * get current schedule for student.
+	 /*
+	  	*Get current schedule for student. It can be tested with an HTTP GET request
 	 */
 	@GetMapping("/schedule")
 	public ScheduleDTO getSchedule( @RequestParam("year") int year, @RequestParam("semester") String semester ) {
 		System.out.println("/schedule called.");
+		//gets email from database
 		String student_email = "test@csumb.edu";   // student's email 
 		
 		Student student = studentRepository.findByEmail(student_email);
+		//The following code is; if student is found then it will get students info
 		if (student != null) {
 			System.out.println("/schedule student "+student.getName()+" "+student.getStudent_id());
 			List<Enrollment> enrollments = enrollmentRepository.findStudentSchedule(student_email, year, semester);
 			ScheduleDTO sched = createSchedule(year, semester, student, enrollments);
 			return sched;
-		} else {
+			} else {
 			System.out.println("/schedule student not found. "+student_email);
 			throw  new ResponseStatusException( HttpStatus.BAD_REQUEST, "Student not found. " );
+			}
 		}
-	}
 	
 
 	

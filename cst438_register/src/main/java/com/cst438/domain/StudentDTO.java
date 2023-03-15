@@ -1,5 +1,6 @@
 package com.cst438.domain;
 
+//This is a class part of the DTO and it includes setters and getters for the member variables for student
 public class StudentDTO {
 	public int id;
     public String studentName;
