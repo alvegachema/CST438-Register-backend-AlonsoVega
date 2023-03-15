@@ -56,6 +56,7 @@ public class JunitTestAdmin {
 	@Autowired
 	private MockMvc mvc;
 	
+	//The following is the first unit test to test the add student and this unit will send a POST request and it should expect a response confirming true
 	@Test
 	public void addStudent() throws Exception {
 		
@@ -92,6 +93,7 @@ public class JunitTestAdmin {
 		verify(studentRepository).save(any(Student.class));
 	}
 	
+	//The following is the second test and this will test the REST API to check if the student hold updates correctly. 
 	@Test
 	public void changeHold() throws Exception {
 		MockHttpServletResponse response;
@@ -126,6 +128,7 @@ public class JunitTestAdmin {
 		verify(studentRepository).save(any(Student.class));
 	}
 	
+	//The following code will change objects into json format/strings or json to object. 
 	private static String asJsonString(final Object obj) {
 		try {
 
