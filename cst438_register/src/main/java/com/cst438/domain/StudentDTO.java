@@ -6,7 +6,7 @@ public class StudentDTO {
     public String studentName;
     public String studentEmail;
     public String status;
-    public String statusCode; //int
+    public int statusCode; //int
 
 
       
@@ -42,11 +42,11 @@ public class StudentDTO {
         this.status = status;
     }
 
-    public String getStatusCode() {
+    public int getStatusCode() {
         return statusCode;
     }
 
-    public void setStatusCode(String statusCode) {
+    public void setStatusCode(int statusCode) {
         this.statusCode = statusCode;
     }
 }

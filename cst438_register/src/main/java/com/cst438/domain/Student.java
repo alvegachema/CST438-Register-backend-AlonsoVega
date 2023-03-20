@@ -13,7 +13,7 @@ public class Student {
 	private int student_id;
 	private String name;
 	private String email;
-	private int statusCode;
+	private int statusCode;//
 	private String status;
 	
 	public Student() {
@@ -55,4 +55,8 @@ public class Student {
 		return "Student [student_id=" + student_id + ", name=" + name + ", email=" + email + ", statusCode="
 				+ statusCode + ", status=" + status + "]";
 		}
+
+
+	
+
 	}
