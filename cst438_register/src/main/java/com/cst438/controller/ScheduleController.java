@@ -80,7 +80,7 @@ public class ScheduleController {
 		// = 0  ok to register
 		// != 0 hold on registration.  student.status may have reason for hold.
 		
-		if (student!= null && course!=null && student.getStatusCode()==0) {
+		if (student!= null && course!=null && student.getStatusCode()== 0) {
 			// TODO check that today's date is not past add deadline for the course.
 			Enrollment enrollment = new Enrollment();
 			enrollment.setStudent(student);

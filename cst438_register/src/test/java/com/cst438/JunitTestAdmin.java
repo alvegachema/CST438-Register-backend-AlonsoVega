@@ -47,7 +47,7 @@ public class JunitTestAdmin {
 	public static final String TEST_STUDENT_NAME  = "test";
 	public static final String TEST_STUDENT_EMAIL_UNIQUE = "test2@csumb.edu";
 	public static final String TEST_STATUS = "Hold";
-	public static final String TEST_STATUS_CODE_HOLD = "1";
+	public static final int TEST_STATUS_CODE_HOLD = 1;
 	public static final int TEST_STATUS_CODE_NO_HOLD = 0;
 	
 	@MockBean

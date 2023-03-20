@@ -36,3 +36,25 @@ public class Cst4380wRegistrationApplication  {
 	}
 
 }
+
+/*
+fetch(`${SERVER_URL}/addStudent`,
+	      { 
+	        method: 'POST', 
+	        headers: { 'Content-Type': 'application/json',
+	                   'X-XSRF-TOKEN': token  }, 
+	        body: JSON.stringify(student)
+	      })
+
+fetch(`${SERVER_URL}/addStudent`, 
+		{
+      mode: 'no-cors',
+        	headers: { 
+				'Content-Type': 'application/json',
+				'X-XSRF-TOKEN': token  
+				},
+	        credentials: 'include', 
+   			method: 'POST',
+			body: JSON.stringify(student)
+		})
+*/
