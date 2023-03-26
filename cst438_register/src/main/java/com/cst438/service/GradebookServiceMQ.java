@@ -11,6 +11,7 @@ import com.cst438.domain.CourseDTOG;
 import com.cst438.domain.Enrollment;
 import com.cst438.domain.EnrollmentDTO;
 import com.cst438.domain.EnrollmentRepository;
+import com.cst438.domain.CourseDTOG.GradeDTO;
 
 
 public class GradebookServiceMQ extends GradebookService {
@@ -32,20 +33,25 @@ public class GradebookServiceMQ extends GradebookService {
 	// send message to grade book service about new student enrollment in course
 	@Override
 	public void enrollStudent(String student_email, String student_name, int course_id) {
-		 
-		// TODO 
-		// create EnrollmentDTO and send to gradebookQueue
 		
-		System.out.println("Message send to gradbook service for student "+ student_email +" " + course_id);  
+		//This code will use DTO objects and will be sent to gradebook.
+		EnrollmentDTO enrollmentDTO = new EnrollmentDTO(student_email, student_name, course_id);
+		rabbitTemplate.convertAndSend(gradebookQueue.getName(), enrollmentDTO);
 		
 	}
 	
 	@RabbitListener(queues = "registration-queue")
+	@Transactional
 	public void receive(CourseDTOG courseDTOG) {
-		System.out.println("Receive enrollment :" + courseDTOG);
-
-		//TODO 
-		// for each student grade in courseDTOG,  find the student enrollment entity, update the grade and save back to enrollmentRepository.
+		
+		//This code will update grades for all students in the course
+		int course_id = courseDTOG.course_id;
+		for (GradeDTO gradeDTO: courseDTOG.grades)
+		{
+			Enrollment enrollment = enrollmentRepository.findByEmailAndCourseId(gradeDTO.student_email, course_id);
+			enrollment.setCourseGrade(gradeDTO.grade);
+			enrollmentRepository.save(enrollment);
+		}
 	}
-
+	
 }

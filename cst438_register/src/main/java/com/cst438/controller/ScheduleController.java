@@ -61,7 +61,7 @@ public class ScheduleController {
 			return sched;
 			} else {
 			System.out.println("/schedule student not found. "+student_email);
-			throw  new ResponseStatusException( HttpStatus.BAD_REQUEST, "Student not found. " );
+			throw  new ResponseStatusException( HttpStatus.BAD_REQUEST, "Student not found! " );
 			}
 		}
 	
