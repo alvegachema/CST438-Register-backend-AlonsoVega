@@ -1,3 +1,4 @@
+
 package com.cst438.service;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -25,16 +26,6 @@ public class GradebookServiceREST extends GradebookService {
 		
 		//The following line of code will do a post dto object to the other service; gradebook
 		restTemplate.postForEntity(gradebook_url + "/enrollment", enrollmentDTO, EnrollmentDTO.class);
-		
-		//The following code can also be used in case there is any problems with gradebook backend
-		
-		//EnrollmentDTO enrollment = new EnrollmentDTO();
-		//enrollment.course_id = course_id;
-		//enrollment.studentEmail = student_email;
-		//enrollment.studentName = student_name;
-		//System.out.println("Post to gradebook "+enrollment);
-		//EnrollmentDTO response = restTemplate.postForObject(gradebook_url+"/enrollment", enrollment, enrollmentDTO.class);
-		//System.out.println("Response from gradebook "+response);
 		
 	}
 

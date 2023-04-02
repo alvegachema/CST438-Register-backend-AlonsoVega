@@ -38,9 +38,9 @@ import com.cst438.domain.EnrollmentRepository;
 @SpringBootTest
 public class EndToEndScheduleTest {
 
-	public static final String CHROME_DRIVER_FILE_LOCATION = "C:/chromedriver_win32/chromedriver.exe";
+	public static final String CHROME_DRIVER_FILE_LOCATION = "C:/chromedriver.exe";
 
-	public static final String URL = "http://localhost:3000";
+	public static final String URL = "http://localhost:3000/schedule";
 
 	public static final String TEST_USER_EMAIL = "test@csumb.edu";
 
@@ -99,7 +99,7 @@ public class EndToEndScheduleTest {
 
 			// select the last of the radio buttons on the list of semesters page.
 			
-			WebElement we = driver.findElement(By.xpath("(//input[@type='radio'])[last()]"));
+			WebElement we = driver.findElement(By.xpath("(//input[@type='button'])[last()]"));
 			we.click();
 
 			// Locate and click "Get Schedule" button
@@ -155,3 +155,4 @@ public class EndToEndScheduleTest {
 
 	}
 }
+
