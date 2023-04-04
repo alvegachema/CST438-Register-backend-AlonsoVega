@@ -1,5 +1,4 @@
 package com.cst438.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +23,7 @@ import com.cst438.domain.ScheduleDTO;
 import com.cst438.domain.Student;
 import com.cst438.domain.StudentRepository;
 import com.cst438.service.GradebookService;
+
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "https://registerf-cst438.herokuapp.com/"})
